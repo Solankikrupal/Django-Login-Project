@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% extends 'home_page/base.html' %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+  {% if registered %} <!--this is funcion in views.py -->
+        <h1>Hey You registered </h1>
+  {% else %}
+    <h1>Register booth</h1>
+    <h1>Fill Out the Form </h1>
+
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type = "submit" value="Register" >
+    </form>
+  {% endif %}
+</div>
+
+{% endblock %}
